@@ -43,6 +43,24 @@ class MyUserManager(UserManager):
         return self._create_user(username, email, password, **extra_fields)
 
 class User(AbstractBaseUser,PermissionsMixin,TrackingModel):
-    pass
+    username_validator = UnicodeUsernameValidator()
 
+    username = models.CharField(
+        _('username')
+        ,max_length=150
+        ,unique=True
+        help_text=_('Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.')
+        ,validators=[username_validator]
+        ,error_messages={
+            'unique': _("A user with that username already exists."),
+        },
+    )
+    
+    email = models.EmailField(_('email address'),blank=False, unique=True)
+    is_staff = models.BooleanField(
+        _('staff status'),
+        default=False,
+        help_text=_('Designates whether the user can log into this admin site.'),
+        
+    )
 
