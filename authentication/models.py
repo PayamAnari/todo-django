@@ -3,7 +3,9 @@ from helpers.models import TrackingModel
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.contrib.auth.models import (AbstractBaseUser,UserManager, PermissionsMixin)
 from django.utils.translation import gettext_lazy as _
-
+from django.utils import timezone
+from datetime import datetime, timedelta
+from django.conf import settings
 
 
 class MyUserManager(UserManager):
@@ -23,11 +25,11 @@ class MyUserManager(UserManager):
         user.save(using=self._db)
         return user
 
-    def create_user(self, username, email, password=None, **extra_fields):
+    def create_user(self, username,first_name, last_name, email, password=None, **extra_fields):
           
           extra_fields.setdefault('is_staff', False)
           extra_fields.setdefault('is_superuser', False)
-          return self._create_user(username, email, password, **extra_fields)
+          return self._create_user(username,first_name, last_name, email, password, **extra_fields)
 
     def create_superuser(self, username, email, password=None, **extra_fields):
         
@@ -48,13 +50,15 @@ class User(AbstractBaseUser,PermissionsMixin,TrackingModel):
     username = models.CharField(
         _('username')
         ,max_length=150
-        ,unique=True
+        ,unique=True,
         help_text=_('Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.')
         ,validators=[username_validator]
         ,error_messages={
             'unique': _("A user with that username already exists."),
         },
     )
+    first_name = models.CharField(_('first name'), max_length=30, blank=False)
+    last_name = models.CharField(_('last name'), max_length=30, blank=False)
     
     email = models.EmailField(_('email address'),blank=False, unique=True)
     is_staff = models.BooleanField(
@@ -84,3 +88,7 @@ class User(AbstractBaseUser,PermissionsMixin,TrackingModel):
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
+
+    @property
+    def token(self):
+      return ''
