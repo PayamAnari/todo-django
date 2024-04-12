@@ -5,7 +5,15 @@ class TestModel(APITestCase):
 
     def test_creates_user(self):
         user = User.objects.create_user(
-            'username','example@gmail.com', 'password123'
-        )
+            'payam', 'payam@gmail.com', 'password123!@')
         self.assertIsInstance(user, User)
-        self.assertEqual(user.email,User)
+        self.assertFalse(user.is_staff)
+        self.assertEqual(user.email, 'payam@gmail.com')
+
+   
+   def test_creates_super_user(self):
+        user = User.objects.create_superuser(
+            'payam', 'payam@gmail.com', 'password123!@')
+        self.assertIsInstance(user, User)
+        self.assertTrue(user.is_staff)
+        self.assertTrue(user.is_superuser)
