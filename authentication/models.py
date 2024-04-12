@@ -71,4 +71,16 @@ class User(AbstractBaseUser,PermissionsMixin,TrackingModel):
             'Unselect this instead of deleting accounts.'
         ),
     )
+    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
+    email_verified = models.BooleanField(
+        _('email verified'), 
+        default=False,
+        help_text= _(
+            'Designates whether this user has verified their email address.'
+        )
+    )
+    objects = MyUserManager()
     
+    EMAIL_FIELD = 'email'
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
