@@ -45,4 +45,4 @@ class LoginAPIView(GenericAPIView):
 
           return Response({'message': 'User logged in successfully!', 'data': serializer.data}, status=status.HTTP_200_OK)
 
-        return Response({'message': 'Invalid credentials', 'data': {}}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'message': 'Invalid credentials', 'data': {}}, status=status.HTTP_401_UNAUTHORIZED)
