@@ -65,6 +65,8 @@ class User(AbstractBaseUser, PermissionsMixin, TrackingModel):
             'unique': _("A user with that username already exists."),
         },
     )
+    first_name = models.CharField(_("first name"), max_length=150, blank=True)
+    last_name = models.CharField(_("last name"), max_length=150, blank=True)
     email = models.EmailField(_('email address'), blank=False, unique=True)
     is_staff = models.BooleanField(
         _('staff status'),
@@ -93,7 +95,7 @@ class User(AbstractBaseUser, PermissionsMixin, TrackingModel):
 
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
     @property
     def token(self):

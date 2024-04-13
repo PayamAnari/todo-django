@@ -11,7 +11,7 @@ class TestModel(APITestCase):
         self.assertEqual(user.email, 'payam@gmail.com')
 
    
-   def test_creates_super_user(self):
+    def test_creates_super_user(self):
         user = User.objects.create_superuser(
             'payam', 'payam@gmail.com', 'password123!@')
         self.assertIsInstance(user, User)
