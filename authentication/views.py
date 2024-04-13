@@ -29,6 +29,15 @@ class UsersAPIView(GenericAPIView):
           serializer = self.serializer_class(users, many=True)
           return Response(serializer.data, status=status.HTTP_200_OK)
 
+   def get(self, request, pk):
+          user = User.objects.get(id=pk)
+
+          if not user:
+            return Response({'message': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+          
+          serializer = self.serializer_class(user)
+          return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 class LoginAPIView(GenericAPIView):
     
@@ -45,4 +54,4 @@ class LoginAPIView(GenericAPIView):
 
           return Response({'message': 'User logged in successfully!', 'data': serializer.data}, status=status.HTTP_200_OK)
 
-        return Response({'message': 'Invalid credentials', 'data': {}}, status=status.HTTP_401_UNAUTHORIZED)
+        return Response({'message': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
