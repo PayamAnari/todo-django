@@ -2,8 +2,7 @@ from django.shortcuts import render
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework import status
-from authentication.serializers import RegisterSerializers, GetUserSerializers
-from authentication.models import User
+from authentication.serializers import RegisterSerializers, GetUserSerializers, LoginSerializers
 from django.contrib.auth import authenticate
 
 
@@ -32,8 +31,17 @@ class UsersAPIView(GenericAPIView):
 
 class LoginAPIView(GenericAPIView):
     
+    serializer_class = LoginSerializers
+    
     def post(self, request):
         email = request.data.get('email', None)
         password = request.data.get('password', None)
 
         user = authenticate(username= email, password= password)
+
+        if user:
+          serializer = self.serializer_class(user)
+
+          return Response({'message': 'User logged in successfully!', 'data': serializer.data}, status=status.HTTP_200_OK)
+
+        return Response({'message': 'Invalid credentials', 'data': {}}, status=status.HTTP_400_BAD_REQUEST)
