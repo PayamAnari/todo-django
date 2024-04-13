@@ -5,6 +5,8 @@ from rest_framework import status
 from authentication.serializers import RegisterSerializers, GetUserSerializers, LoginSerializers
 from django.contrib.auth import authenticate
 from authentication.models import User
+from django.core.exceptions import ObjectDoesNotExist
+
 
 
 
@@ -30,13 +32,12 @@ class UsersAPIView(GenericAPIView):
           return Response(serializer.data, status=status.HTTP_200_OK)
 
    def get(self, request, pk):
-          user = User.objects.get(id=pk)
-
-          if not user:
+        try:
+            user = User.objects.get(id=pk)
+            serializer = self.serializer_class(user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except ObjectDoesNotExist:
             return Response({'message': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
-          
-          serializer = self.serializer_class(user)
-          return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class LoginAPIView(GenericAPIView):
