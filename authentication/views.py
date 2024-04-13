@@ -27,3 +27,12 @@ class UsersAPIView(GenericAPIView):
           users = User.objects.all()
           serializer = self.serializer_class(users, many=True)
           return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class LoginAPIView(GenericAPIView):
+    
+    def post(self, request):
+        email = request.data.get('email', None)
+        password = request.data.get('password', None)
+
+        user = authenticate(username= email, password= password)
