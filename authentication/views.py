@@ -19,3 +19,11 @@ class RegisterAPIView(GenericAPIView):
           return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class UsersAPIView(GenericAPIView):
+   
+   serializer_class = GetUserSerializers
+
+   def get(self, request):
+          users = User.objects.all()
+          serializer = self.serializer_class(users, many=True)
+          return Response(serializer.data, status=status.HTTP_200_OK)
