@@ -2,9 +2,9 @@ from rest_framework import serializers
 from authentication.models import User
 
 
-class RegisterSerializers(serializers.modelSerializers):
+class RegisterSerializers(serializers.ModelSerializer):
 
-    password = serializers.CharField(max_length=128, min_lenght=6, write_only=True)
+    password = serializers.CharField(max_length=128, min_length=6, write_only=True)
 
 
     class Meta:
