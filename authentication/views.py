@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from authentication.serializers import RegisterSerializers, GetUserSerializers, LoginSerializers
 from django.contrib.auth import authenticate
+from authentication.models import User
 
 
 
