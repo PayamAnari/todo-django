@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework import status
-from authentication.serializers import RegisterSerializers, GetUserSerializers, LoginSerializers
+from authentication.serializers import RegisterSerializers, GetUsersSerializers, LoginSerializers, GetUserSerializers
 from django.contrib.auth import authenticate
 from authentication.models import User
 from django.core.exceptions import ObjectDoesNotExist
@@ -24,14 +24,18 @@ class RegisterAPIView(GenericAPIView):
 
 class UsersAPIView(GenericAPIView):
    
-   serializer_class = GetUserSerializers
+   serializer_class = GetUsersSerializers
 
    def get(self, request):
           users = User.objects.all()
           serializer = self.serializer_class(users, many=True)
           return Response(serializer.data, status=status.HTTP_200_OK)
 
-   def get(self, request, pk):
+class UserAPIView(GenericAPIView):
+   
+    serializer_class = GetUserSerializers
+
+    def get(self, request, pk):
         try:
             user = User.objects.get(id=pk)
             serializer = self.serializer_class(user)
