@@ -18,6 +18,9 @@ class TestModel(APITestCase):
         with self.assertRaisesMessage(ValueError, 'The given username must be set'):
             User.objects.create_user(username='', email='payam@gmail.com', password='password123!@')
 
+    def test_raises_error_when_no_email_is_supplied(self):
+        self.assertRaises(ValueError, User.objects.create_user, username='payam', email='', password='password123!@')
+
     def test_creates_super_user(self):
         user = User.objects.create_superuser(
             'payam', 'payam@gmail.com', 'password123!@')
