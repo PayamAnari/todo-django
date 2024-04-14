@@ -109,11 +109,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-rest_framework = [ 
+REST_FRAMEWORK = { 
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'authenticatiob.jwt.JWTAuthentication',
+        'authentication.jwt.JWTAuthentication',
     )
-]
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
