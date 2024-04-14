@@ -2,11 +2,12 @@ from django.shortcuts import render
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework import status, permissions
-from authentication.serializers import RegisterSerializers, GetUsersSerializers, LoginSerializers, GetUserSerializers
-from django.contrib.auth import authenticate
+from authentication.serializers import RegisterSerializers, GetUsersSerializers, LoginSerializer, GetUserSerializers
+from django.contrib.auth import authenticate, logout
 from authentication.models import User
 from django.core.exceptions import ObjectDoesNotExist
-from rest_framework.authtoken.models import Token
+
+
 
 class AuthUserAPIView(GenericAPIView):
       
@@ -52,8 +53,10 @@ class UserAPIView(GenericAPIView):
 
 
 class LoginAPIView(GenericAPIView):
+   
+    authentication_classes = []
     
-    serializer_class = LoginSerializers
+    serializer_class = LoginSerializer
     
     def post(self, request):
         email = request.data.get('email', None)
@@ -64,19 +67,17 @@ class LoginAPIView(GenericAPIView):
         if user:
           serializer = self.serializer_class(user)
 
-          return Response({'message': 'User logged in successfully!', 'data': serializer.data}, status=status.HTTP_200_OK)
+          return Response({'message': 'User logged in successfully!', 'data': serializer.data})
 
         return Response({'message': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
-class LogoutAPIView(GenericAPIView):
+
+
+class LogOutAPIView(GenericAPIView):
     
     permission_classes = [permissions.IsAuthenticated]
-
+    
     def post(self, request):
-      try:
-           token = Token.objects.get(user=request.user)
-           token.delete()
-           return Response({'message': 'User logged out successfully!'}, status=status.HTTP_200_OK)
-      except Token.DoesNotExist:
-           return Response({'message': 'No authentication token found for the user'}, status=status.HTTP_400_BAD_REQUEST)
+        logout(request)
+        return Response({'message': 'User logged out successfully!'}, status=status.HTTP_200_OK)

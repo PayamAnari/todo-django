@@ -32,8 +32,10 @@ class JWTAuthentication(BaseAuthentication):
         except jwt.DecodeError as ex:
             raise exceptions.AuthenticationFailed('Token is invalid')
 
-        except User.DoesNotExist as ex:
+        except User.DoesNotExist as no_user:
             raise exceptions.AuthenticationFailed('User not found')
+
+        return super().authenticate(request)
 
 
 
