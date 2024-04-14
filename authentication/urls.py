@@ -10,4 +10,5 @@ urlpatterns = [
     path('logout', views.LogOutAPIView.as_view(), name='logout'),
     path('user', views.AuthUserAPIView.as_view(), name='user'),
     path('user/<int:pk>', views.DeleteUserAPIView.as_view(), name='delete-user'),
+    path('user/<int:pk>', views.UpdateUserAPIView.as_view(), name='update-user')
 ]
