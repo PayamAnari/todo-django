@@ -6,7 +6,7 @@ from authentication.serializers import RegisterSerializers, GetUsersSerializers,
 from django.contrib.auth import authenticate
 from authentication.models import User
 from django.core.exceptions import ObjectDoesNotExist
-
+from rest_framework.authtoken.models import Token
 
 class AuthUserAPIView(GenericAPIView):
       
@@ -74,5 +74,9 @@ class LogoutAPIView(GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
-        request.user.auth_token.delete()
-        return Response({'message': 'User logged out successfully!'}, status=status.HTTP_200_OK)
+      try:
+           token = Token.objects.get(user=request.user)
+           token.delete()
+           return Response({'message': 'User logged out successfully!'}, status=status.HTTP_200_OK)
+      except Token.DoesNotExist:
+           return Response({'message': 'No authentication token found for the user'}, status=status.HTTP_400_BAD_REQUEST)
