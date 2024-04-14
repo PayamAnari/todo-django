@@ -1,14 +1,21 @@
 from django.shortcuts import render
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, permissions
 from authentication.serializers import RegisterSerializers, GetUsersSerializers, LoginSerializers, GetUserSerializers
 from django.contrib.auth import authenticate
 from authentication.models import User
 from django.core.exceptions import ObjectDoesNotExist
 
 
-
+class AuthUserAPIView(GenericAPIView):
+      
+      permission_classes = [permissions.IsAuthenticated]
+      
+      def get(self, request):
+          user = request.user
+          serializer = GetUserSerializers(user)
+          return Response(serializer.data, status=status.HTTP_200_OK)
 
 class RegisterAPIView(GenericAPIView):
      
