@@ -81,3 +81,14 @@ class LogOutAPIView(GenericAPIView):
     def post(self, request):
         logout(request)
         return Response({'message': 'User logged out successfully!'}, status=status.HTTP_200_OK)
+
+
+
+class DeleteUserAPIView(GenericAPIView):
+
+     permission_classes = [permissions.IsAuthenticated]
+
+     def delete(self, request, pk):
+         user = User.objects.get(id=pk)
+         user.delete()
+         return Response({'message': 'User deleted successfully!'}, status=status.HTTP_200_OK)
