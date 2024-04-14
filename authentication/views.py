@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework import status, permissions
-from authentication.serializers import RegisterSerializers, GetUsersSerializers, LoginSerializer, GetUserSerializers
+from authentication.serializers import RegisterSerializers, GetUsersSerializers, LoginSerializer, GetUserSerializers, UpdateUserSerializers
 from django.contrib.auth import authenticate, logout
 from authentication.models import User
 from django.core.exceptions import ObjectDoesNotExist
@@ -92,3 +92,18 @@ class DeleteUserAPIView(GenericAPIView):
          user = User.objects.get(id=pk)
          user.delete()
          return Response({'message': 'User deleted successfully!'}, status=status.HTTP_200_OK)
+
+
+
+class UpdateUserAPIView(GenericAPIView):
+   permissions_classes = [permissions.IsAuthenticated]
+
+   serializer_class = UpdateUserSerializers
+
+   def put(self, request, pk):
+        user = User.objects.get(id=pk)
+        serializer = self.serializer_class(user, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message': 'User updated successfully!'}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
