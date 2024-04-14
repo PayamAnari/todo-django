@@ -14,7 +14,7 @@ class AuthUserAPIView(GenericAPIView):
       
       def get(self, request):
           user = request.user
-          serializer = GetUserSerializers(user)
+          serializer = RegisterSerializers(user)
           return Response(serializer.data, status=status.HTTP_200_OK)
 
 class RegisterAPIView(GenericAPIView):
