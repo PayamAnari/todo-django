@@ -20,6 +20,8 @@ class AuthUserAPIView(GenericAPIView):
 
 class RegisterAPIView(GenericAPIView):
      
+     authentication_classes = []
+     
      serializer_class = RegisterSerializers
 
      def post(self, request):
@@ -104,6 +106,6 @@ class UpdateUserAPIView(GenericAPIView):
         user = User.objects.get(id=pk)
         serializer = self.serializer_class(user, data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response({'message': 'User updated successfully!'}, status=status.HTTP_200_OK)
+            serializer.save(instance=user)
+            return Response({'message': 'User updated successfully!', "data": serializer.data}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
