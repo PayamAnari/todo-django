@@ -98,14 +98,16 @@ class DeleteUserAPIView(GenericAPIView):
 
 
 class UpdateUserAPIView(GenericAPIView):
-   permissions_classes = [permissions.IsAuthenticated]
+    serializer_class = UpdateUserSerializers
+    permission_classes = [permissions.IsAuthenticated]
 
-   serializer_class = UpdateUserSerializers
-
-   def put(self, request, pk):
-        user = User.objects.get(id=pk)
-        serializer = self.serializer_class(user, data=request.data)
+    def put(self, request, *args, **kwargs):
+        user = request.user
+        serializer = self.get_serializer(user, data=request.data)
         if serializer.is_valid():
-            serializer.save(instance=user)
-            return Response({'message': 'User updated successfully!', "data": serializer.data}, status=status.HTTP_200_OK)
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def patch(self, request, *args, **kwargs):
+        return self.put(request, *args, **kwargs)
