@@ -372,6 +372,14 @@
         "documentation": {}
     },
     {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
         "label": "render",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
@@ -530,6 +538,14 @@
         "description": "django.test",
         "isExtraImport": true,
         "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "CreateTodoAPIView",
+        "importPath": "todos.views",
+        "description": "todos.views",
+        "isExtraImport": true,
+        "detail": "todos.views",
         "documentation": {}
     },
     {
@@ -987,6 +1003,15 @@
         "description": "todos.serializers",
         "peekOfCode": "class TodoSerializer(ModelSerializer):\n    class Meta:\n        model = Todo\n        fields = [\n            \"id\",\n            \"title\",\n            \"completed\",\n            \"priority\",\n            \"due_date\",\n            \"description\",",
         "detail": "todos.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "todos.urls",
+        "description": "todos.urls",
+        "peekOfCode": "urlpatterns = [\n    path(\n        \"create\",\n    )\n]",
+        "detail": "todos.urls",
         "documentation": {}
     },
     {
