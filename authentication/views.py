@@ -4,9 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status, permissions
 from authentication.serializers import (
     RegisterSerializers,
-    GetUsersSerializers,
     LoginSerializer,
-    GetUserSerializers,
     UpdateUserSerializers,
     UserWithTodoCountSerializer,
 )
@@ -57,7 +55,7 @@ class UsersAPIView(GenericAPIView):
 
 class UserAPIView(GenericAPIView):
 
-    serializer_class = GetUserSerializers
+    serializer_class = UserWithTodoCountSerializer
 
     def get(self, request, pk):
         try:
