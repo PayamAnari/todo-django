@@ -1078,7 +1078,7 @@
         "kind": 6,
         "importPath": "todos.views",
         "description": "todos.views",
-        "peekOfCode": "class TodoListAPIView(ListAPIView):\n    serializer_class = TodoSerializer\n    permission_class = [\n        IsAuthenticated,\n    ]\n    def get_queryset(self):\n        return Todo.objects.filter(owner=self.request.user",
+        "peekOfCode": "class TodoListAPIView(ListAPIView):\n    serializer_class = TodoSerializer\n    permission_class = [\n        IsAuthenticated,\n    ]\n    def get_queryset(self):\n        return Todo.objects.filter(owner=self.request.user)",
         "detail": "todos.views",
         "documentation": {}
     },
