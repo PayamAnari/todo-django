@@ -3,6 +3,7 @@ from rest_framework.generics import ListCreateAPIView
 from .models import Todo
 from todos.serializers import TodoSerializer
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 
 
 class TodosListAPIView(ListCreateAPIView):
@@ -14,6 +15,9 @@ class TodosListAPIView(ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+        return Response(
+            {"message": "Todo created successfully"}, status=status.HTTP_201_CREATED
+        )
 
 
 # class CreateTodoAPIView(CreateAPIView):
