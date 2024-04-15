@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Todo
+from todos.models import Todo
 
 
 class TodoSerializer(ModelSerializer):
@@ -12,5 +12,4 @@ class TodoSerializer(ModelSerializer):
             "priority",
             "due_date",
             "description",
-            "owner",
         ]

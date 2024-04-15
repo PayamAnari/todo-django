@@ -509,11 +509,35 @@
         "documentation": {}
     },
     {
+        "label": "ModelSerializer",
+        "importPath": "rest_framework.serializers",
+        "description": "rest_framework.serializers",
+        "isExtraImport": true,
+        "detail": "rest_framework.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "Todo",
+        "importPath": "todos.models",
+        "description": "todos.models",
+        "isExtraImport": true,
+        "detail": "todos.models",
+        "documentation": {}
+    },
+    {
         "label": "TestCase",
         "importPath": "django.test",
         "description": "django.test",
         "isExtraImport": true,
         "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "TodoSerializer",
+        "importPath": "todos.serializers",
+        "description": "todos.serializers",
+        "isExtraImport": true,
+        "detail": "todos.serializers",
         "documentation": {}
     },
     {
@@ -946,6 +970,24 @@
         "description": "todos.models",
         "peekOfCode": "class Todo(TrackingModel):\n    title = models.CharField(max_length=255)\n    description = models.TextField()\n    due_date = models.DateTimeField()\n    is_completed = models.BooleanField(default=False)\n    priority = models.CharField(max_length=255)\n    owner = models.ForeignKey(User, on_delete=models.CASCADE)\n    def __str__(self):\n        return self.title",
         "detail": "todos.models",
+        "documentation": {}
+    },
+    {
+        "label": "TodoSerializer",
+        "kind": 6,
+        "importPath": "todos.serializers",
+        "description": "todos.serializers",
+        "peekOfCode": "class TodoSerializer(ModelSerializer):\n    class Meta:\n        model = Todo\n        fields = [\n            \"id\",\n            \"title\",\n            \"completed\",\n            \"priority\",\n            \"due_date\",\n            \"description\",",
+        "detail": "todos.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "CreateTodoAPIView",
+        "kind": 6,
+        "importPath": "todos.views",
+        "description": "todos.views",
+        "peekOfCode": "class CreateTodoAPIView(CreateAPIView):\n    serializer_class = TodoSerializer",
+        "detail": "todos.views",
         "documentation": {}
     },
     {
