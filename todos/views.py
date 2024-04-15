@@ -4,7 +4,7 @@ from todos.serializers import TodoSerializer
 from rest_framework.permissions import IsAuthenticated
 
 
-class TodosListAPIView(ListCreateAPIView):
+class TodosAPIView(ListCreateAPIView):
     serializer_class = TodoSerializer
     permission_classes = [IsAuthenticated]
 
@@ -18,6 +18,7 @@ class TodosListAPIView(ListCreateAPIView):
 class TodoDetailAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = TodoSerializer
     permission_classes = [IsAuthenticated]
+    lookup_field = "id"
 
     def get_queryset(self):
         return Todo.objects.filter(owner=self.request.user)
