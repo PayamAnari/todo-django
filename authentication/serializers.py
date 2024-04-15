@@ -77,3 +77,14 @@ class GetUserDetailInTodo(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["id", "username", "email"]
+
+
+class UserWithTodoCountSerializer(serializers.ModelSerializer):
+    todo_count = serializers.SerializerMethodField()
+
+    class Meta:
+        model = User
+        fields = ["id", "username", "first_name", "last_name", "email", "todo_count"]
+
+    def get_todo_count(self, obj):
+        return obj.get_todo_count()

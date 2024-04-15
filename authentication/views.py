@@ -8,6 +8,7 @@ from authentication.serializers import (
     LoginSerializer,
     GetUserSerializers,
     UpdateUserSerializers,
+    UserWithTodoCountSerializer,
 )
 from django.contrib.auth import authenticate, logout
 from authentication.models import User
@@ -21,7 +22,10 @@ class AuthUserAPIView(GenericAPIView):
     def get(self, request):
         user = request.user
         serializer = RegisterSerializers(user)
-        return Response({"user": serializer.data}, status=status.HTTP_200_OK)
+        return Response(
+            {"user": serializer.data},
+            status=status.HTTP_200_OK,
+        )
 
 
 class RegisterAPIView(GenericAPIView):
@@ -43,7 +47,7 @@ class RegisterAPIView(GenericAPIView):
 
 class UsersAPIView(GenericAPIView):
 
-    serializer_class = GetUsersSerializers
+    serializer_class = UserWithTodoCountSerializer
 
     def get(self, request):
         users = User.objects.all()
