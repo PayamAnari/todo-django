@@ -7,4 +7,9 @@ from rest_framework.permissions import IsAuthenticated
 
 class CreateTodoAPIView(CreateAPIView):
     serializer_class = TodoSerializer
-    permission_class = [IsAuthenticated]
+    permission_class = [
+        IsAuthenticated,
+    ]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)

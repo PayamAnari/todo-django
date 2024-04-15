@@ -541,6 +541,14 @@
         "documentation": {}
     },
     {
+        "label": "IsAuthenticated",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
+        "documentation": {}
+    },
+    {
         "label": "sys",
         "kind": 6,
         "isExtraImport": true,
@@ -986,7 +994,7 @@
         "kind": 6,
         "importPath": "todos.views",
         "description": "todos.views",
-        "peekOfCode": "class CreateTodoAPIView(CreateAPIView):\n    serializer_class = TodoSerializer",
+        "peekOfCode": "class CreateTodoAPIView(CreateAPIView):\n    serializer_class = TodoSerializer\n    permission_class = [\n        IsAuthenticated,\n    ]\n    def perform_create(self, serializer):\n        serializer.save(owner=self.request.user)",
         "detail": "todos.views",
         "documentation": {}
     },
