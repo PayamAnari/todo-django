@@ -139,6 +139,22 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -240,6 +256,14 @@
         "description": "rest_framework",
         "isExtraImport": true,
         "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
         "documentation": {}
     },
     {
@@ -412,6 +436,14 @@
         "documentation": {}
     },
     {
+        "label": "ListAPIView",
+        "importPath": "rest_framework.generics",
+        "description": "rest_framework.generics",
+        "isExtraImport": true,
+        "detail": "rest_framework.generics",
+        "documentation": {}
+    },
+    {
         "label": "Response",
         "importPath": "rest_framework.response",
         "description": "rest_framework.response",
@@ -514,6 +546,15 @@
         "description": "django.core.wsgi",
         "isExtraImport": true,
         "detail": "django.core.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "django.db.models.deletion",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.deletion",
+        "description": "django.db.models.deletion",
+        "detail": "django.db.models.deletion",
         "documentation": {}
     },
     {
@@ -965,7 +1006,7 @@
         "kind": 5,
         "importPath": "todolistapi.urls",
         "description": "todolistapi.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('api/auth/', include('authentication.urls')),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"admin/\", admin.site.urls),\n    path(\"api/auth/\", include(\"authentication.urls\")),\n    path(\"api/todos/\", include(\"todos.urls\")),\n]",
         "detail": "todolistapi.urls",
         "documentation": {}
     },
@@ -976,6 +1017,15 @@
         "description": "todolistapi.wsgi",
         "peekOfCode": "application = get_wsgi_application()",
         "detail": "todolistapi.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "todos.migrations.0001_initial",
+        "description": "todos.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name=\"Todo\",\n            fields=[\n                (",
+        "detail": "todos.migrations.0001_initial",
         "documentation": {}
     },
     {
@@ -1001,7 +1051,7 @@
         "kind": 6,
         "importPath": "todos.serializers",
         "description": "todos.serializers",
-        "peekOfCode": "class TodoSerializer(ModelSerializer):\n    class Meta:\n        model = Todo\n        fields = [\n            \"id\",\n            \"title\",\n            \"completed\",\n            \"priority\",\n            \"due_date\",\n            \"description\",",
+        "peekOfCode": "class TodoSerializer(ModelSerializer):\n    class Meta:\n        model = Todo\n        fields = [\n            \"id\",\n            \"title\",\n            \"is_completed\",\n            \"priority\",\n            \"due_date\",\n            \"description\",",
         "detail": "todos.serializers",
         "documentation": {}
     },
@@ -1019,7 +1069,16 @@
         "kind": 6,
         "importPath": "todos.views",
         "description": "todos.views",
-        "peekOfCode": "class CreateTodoAPIView(CreateAPIView):\n    serializer_class = TodoSerializer\n    permission_class = [\n        IsAuthenticated,\n    ]\n    def perform_create(self, serializer):\n        serializer.save(owner=self.request.user)",
+        "peekOfCode": "class CreateTodoAPIView(CreateAPIView):\n    serializer_class = TodoSerializer\n    permission_class = [\n        IsAuthenticated,\n    ]\n    def perform_create(self, serializer):\n        serializer.save(owner=self.request.user)\nclass TodoListAPIView(ListAPIView):\n    serializer_class = TodoSerializer\n    permission_class = [",
+        "detail": "todos.views",
+        "documentation": {}
+    },
+    {
+        "label": "TodoListAPIView",
+        "kind": 6,
+        "importPath": "todos.views",
+        "description": "todos.views",
+        "peekOfCode": "class TodoListAPIView(ListAPIView):\n    serializer_class = TodoSerializer\n    permission_class = [\n        IsAuthenticated,\n    ]\n    def get_queryset(self):\n        return Todo.objects.filter(owner=self.request.user",
         "detail": "todos.views",
         "documentation": {}
     },

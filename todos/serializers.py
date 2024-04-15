@@ -8,7 +8,7 @@ class TodoSerializer(ModelSerializer):
         fields = [
             "id",
             "title",
-            "completed",
+            "is_completed",
             "priority",
             "due_date",
             "description",
