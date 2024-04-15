@@ -5,7 +5,7 @@ from todos.serializers import TodoSerializer
 from rest_framework.permissions import IsAuthenticated
 
 
-class TodoListAPIView(ListCreateAPIView):
+class TodosListAPIView(ListCreateAPIView):
     serializer_class = TodoSerializer
     permission_classes = [IsAuthenticated]
 
