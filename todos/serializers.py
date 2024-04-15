@@ -1,8 +1,12 @@
 from rest_framework.serializers import ModelSerializer
 from todos.models import Todo
+from authentication.serializers import GetUserDetailInTodo
 
 
 class TodoSerializer(ModelSerializer):
+
+    owner = GetUserDetailInTodo(read_only=True)
+
     class Meta:
         model = Todo
         fields = [
@@ -12,4 +16,5 @@ class TodoSerializer(ModelSerializer):
             "priority",
             "due_date",
             "description",
+            "owner",
         ]
