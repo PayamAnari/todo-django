@@ -590,6 +590,14 @@
         "documentation": {}
     },
     {
+        "label": "TodoListAPIView",
+        "importPath": "todos.views",
+        "description": "todos.views",
+        "isExtraImport": true,
+        "detail": "todos.views",
+        "documentation": {}
+    },
+    {
         "label": "TodoSerializer",
         "importPath": "todos.serializers",
         "description": "todos.serializers",
@@ -1060,7 +1068,7 @@
         "kind": 5,
         "importPath": "todos.urls",
         "description": "todos.urls",
-        "peekOfCode": "urlpatterns = [path(\"create\", CreateTodoAPIView.as_view(), name=\"create_todo\")]",
+        "peekOfCode": "urlpatterns = [\n    path(\"create\", CreateTodoAPIView.as_view(), name=\"create_todo\"),\n    path(\"list\", TodoListAPIView.as_view(), name=\"list_todos\"),\n]",
         "detail": "todos.urls",
         "documentation": {}
     },
