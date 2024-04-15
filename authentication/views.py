@@ -6,7 +6,7 @@ from authentication.serializers import (
     RegisterSerializers,
     LoginSerializer,
     UpdateUserSerializers,
-    UserWithTodoCountSerializer,
+    UserDetailSerializer,
 )
 from django.contrib.auth import authenticate, logout
 from authentication.models import User
@@ -45,7 +45,7 @@ class RegisterAPIView(GenericAPIView):
 
 class UsersAPIView(GenericAPIView):
 
-    serializer_class = UserWithTodoCountSerializer
+    serializer_class = UserDetailSerializer
 
     def get(self, request):
         users = User.objects.all()
@@ -55,7 +55,7 @@ class UsersAPIView(GenericAPIView):
 
 class UserAPIView(GenericAPIView):
 
-    serializer_class = UserWithTodoCountSerializer
+    serializer_class = UserDetailSerializer
 
     def get(self, request, pk):
         try:
