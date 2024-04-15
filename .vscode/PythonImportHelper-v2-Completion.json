@@ -1010,7 +1010,7 @@
         "kind": 5,
         "importPath": "todos.urls",
         "description": "todos.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\n        \"create\",\n    )\n]",
+        "peekOfCode": "urlpatterns = [path(\"create\", CreateTodoAPIView.as_view(), name=\"create_todo\")]",
         "detail": "todos.urls",
         "documentation": {}
     },
