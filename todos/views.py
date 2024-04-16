@@ -9,10 +9,15 @@ from rest_framework import filters, permissions
 class TodosAPIView(ListCreateAPIView):
     serializer_class = TodoSerializer
     permission_classes = [IsAuthenticated]
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filter_backends = [
+        DjangoFilterBackend,
+        filters.SearchFilter,
+        filters.OrderingFilter,
+    ]
 
     filterset_fields = ["id", "title", "is_completed", "priority"]
-    search_fields = ["title", "description"]
+    search_fields = ["title", "description", "priority"]
+    ordering_fields = ["id", "created_at", "due_date", "priority", "is_completed"]
 
     def get_queryset(self):
         return Todo.objects.filter(owner=self.request.user)
