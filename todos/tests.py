@@ -92,3 +92,16 @@ class TestTodoDetailAPIView(TodosAPITestCase):
         updated_todo = Todo.objects.get(id=response.data["id"])
         self.assertEqual(updated_todo.title, "updated title")
         self.assertEqual(updated_todo.description, "updated description")
+
+    def test_delete_one_item(self):
+        self.authenticate()
+        res = self.create_todo()
+        prev_db_count = Todo.objects.all().count()
+
+        self.assertGreater(prev_db_count, 0)
+        self.assertEqual(prev_db_count, 1)
+
+        response = self.client.delete(reverse("todo", kwargs={"id": res.data["id"]}))
+
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(Todo.objects.all().count(), 0)
