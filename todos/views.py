@@ -2,11 +2,15 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 from .models import Todo
 from todos.serializers import TodoSerializer
 from rest_framework.permissions import IsAuthenticated
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class TodosAPIView(ListCreateAPIView):
     serializer_class = TodoSerializer
     permission_classes = [IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+
+    filterset_fields = ["id", "title", "is_completed", "priority"]
 
     def get_queryset(self):
         return Todo.objects.filter(owner=self.request.user)
