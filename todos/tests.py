@@ -17,3 +17,15 @@ class TodosAPITestCase(APITestCase):
         }
         response = self.client.post(reverse("todos"), sample_todo)
         return response
+
+    def authenticate(self):
+        self.client.post(
+            reverse("register"),
+            {
+                "username": "test",
+                "first_name": "user",
+                "last_name": "users",
+                "email": "email@gmail.com",
+                "password": "test",
+            },
+        )
