@@ -15,8 +15,8 @@ class TodosAPIView(ListCreateAPIView):
         filters.OrderingFilter,
     ]
 
-    filterset_fields = ["id", "title", "is_completed", "priority"]
-    search_fields = ["title", "description", "priority"]
+    filterset_fields = ["id", "title", "is_completed", "priority", "due_date"]
+    search_fields = ["title", "description", "priority", "is_completed"]
     ordering_fields = ["id", "created_at", "due_date", "priority", "is_completed"]
 
     def get_queryset(self):
