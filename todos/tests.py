@@ -54,3 +54,14 @@ class TestListCreateTodo(TodosAPITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data["title"], "title test")
         self.assertEqual(response.data["description"], "description test")
+
+    def test_retrievers_all_todos(self):
+        self.authenticate()
+        response = self.client.get(reverse("todos"))
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIsInstance(response.data["results"], list)
+
+        self.create_todo()
+        res = self.client.get(reverse("todos"))
+        self.assertIsInstance(res.data["count"], int)
+        self.assertEqual(res.data["count"], 1)
