@@ -36,3 +36,11 @@ class TodosAPITestCase(APITestCase):
                 "password": "test",
             },
         )
+        self.client.credentials(HTTP_AUTHORIZATION=f"Bearer {response.data['token']}")
+
+
+class TestListCreateTodo(TodosAPITestCase):
+
+    def test_should_not_create_todo_with_no_auth(self):
+        response = self.create_todo()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
