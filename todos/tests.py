@@ -65,3 +65,14 @@ class TestListCreateTodo(TodosAPITestCase):
         res = self.client.get(reverse("todos"))
         self.assertIsInstance(res.data["count"], int)
         self.assertEqual(res.data["count"], 1)
+
+
+class TestTodoDetailAPIView(TodosAPITestCase):
+
+    def test_retrieves_one_item(self):
+        self.authenticate()
+        response = self.create_todo()
+        res = self.client.get(reverse("todo", kwargs={"id": response.data["id"]}))
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        todo = Todo.objects.get(id=response.data["id"])
+        self.assertEqual(todo.title, res.data["title"])
