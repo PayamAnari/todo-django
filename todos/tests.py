@@ -76,3 +76,19 @@ class TestTodoDetailAPIView(TodosAPITestCase):
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         todo = Todo.objects.get(id=response.data["id"])
         self.assertEqual(todo.title, res.data["title"])
+
+    def test_update_one_item(self):
+        self.authenticate()
+        response = self.create_todo()
+        res = self.client.patch(
+            reverse("todo", kwargs={"id": response.data["id"]}),
+            {
+                "title": "updated title",
+                "description": "updated description",
+            },
+        )
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+
+        updated_todo = Todo.objects.get(id=response.data["id"])
+        self.assertEqual(updated_todo.title, "updated title")
+        self.assertEqual(updated_todo.description, "updated description")
