@@ -1,0 +1,39 @@
+version: "3.5"
+
+services:
+  db:
+    image: postgres:12
+    container_name: postgresql
+    hostname: db
+    env_file: .env
+    restart: always
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      - DB_ENGINE=${DB_ENGINE}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: todo
+    command: python manage.py runserver 0.0.0.0:8000
+    env_file: .env
+    restart: always
+    volumes:
+      - .:/app
+    ports:
+      - "8002:8000"
+    depends_on:
+      - db
+
+volumes:
+  data:
