@@ -119,6 +119,13 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 9,
 }
 
+SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+        "Basic": {"type": "basic"},
+        "Bearer": {"type": "apiKey", "name": "Authorization", "in": "header"},
+    }
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
