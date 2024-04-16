@@ -29,3 +29,10 @@ class TodosAPITestCase(APITestCase):
                 "password": "test",
             },
         )
+        response = self.client.post(
+            reverse("login"),
+            {
+                "username": "test",
+                "password": "test",
+            },
+        )
