@@ -183,11 +183,11 @@ data = {
 }
 
 ```
-### Get user by id
+### Get user by Id
 ### request
 
 ```
-POST /users/<int:id>/ HTTP/1.1
+GET /users/<int:id>/ HTTP/1.1
 Host: localhost:8000
 Content-Type: application/json
 Authorization: Bearer <your_access_token>
@@ -211,3 +211,32 @@ Authorization: Bearer <your_access_token>
 }
 ```
 
+### Get Todo by ID
+### request
+
+```
+GET /todos/<int:id>/ HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+Authorization: Bearer <your_access_token>
+
+```
+
+### response
+
+```
+
+{
+    "id": 1,
+    "title": "Example Todo",
+    "description": "This is an example todo",
+    "due_date": "2024-04-20T00:00:00Z",
+    "is_completed": false,
+    "priority": "High",
+    "owner": {
+        "id": 1,
+        "username": "john_doe",
+        "email": "john@example.com"
+    }
+}
+```
