@@ -61,3 +61,4 @@ The project is Dockerized for easy deployment and development environment setup.
 - **Django:** A high-level Python web framework that encourages rapid development and clean, pragmatic design.
 - **Django REST Framework (DRF):** A powerful and flexible toolkit for building Web APIs in Django, providing serializers, views, authentication, and more.
 - **DRF-YASG:** DRF-YASG is a library for generating OpenAPI/Swagger specifications for Django REST Framework APIs.
+- **django-filter:** django-filter provides a simple way to filter down data based on parameters passed in the URL.
