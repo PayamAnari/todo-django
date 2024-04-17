@@ -37,12 +37,17 @@ class TodosAPIView(ListCreateAPIView):
 
 
 class TodoDetailAPIView(RetrieveUpdateDestroyAPIView):
-    serializer_class = TodoCreateSerializer
     permission_classes = [IsAuthenticated]
     lookup_field = "id"
 
     def get_queryset(self):
         return Todo.objects.filter(owner=self.request.user)
+
+    def get_serializer_class(self):
+        if self.request.method == "GET":
+            return TodoRetrieveSerializer
+        elif self.request.method in ["PUT", "PATCH", "DELETE"]:
+            return TodoCreateSerializer
 
 
 # class CreateTodoAPIView(CreateAPIView):
