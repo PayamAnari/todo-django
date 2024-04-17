@@ -137,4 +137,15 @@ DB_PORT=5432
 POSTGRES_PASSWORD=<your_postgresql_password>
 
 ```
+5- **Apply database migrations:**
+```
+python manage.py migrate
+```
+
+6- **Run Docker Compose:**
+```
+docker-compose up
+
+```
+
 
