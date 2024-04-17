@@ -6,3 +6,12 @@
 </h1>
 
 ---
+
+<h3 align="center">
+  <strong>
+🗃 Django Todo List API 🗃
+
+  </strong>
+</h3>
+
+---
