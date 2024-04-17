@@ -36,7 +36,7 @@ The project is Dockerized for easy deployment and development environment setup.
 
 ## Features
 
-- **User Authentication:** Users can register, login, and logout. JWT authentication is used to secure the API endpoints.
-- **Todo Management:** Users can create, retrieve, update, and delete todos. Todos have attributes such as title, description, due date, priority, and completion status.
-- **Pagination and Filtering:** Todos are paginated to improve performance, and filtering options are available based on various attributes such as title, completion status, priority, and due date.
-- **Swagger Documentation:** API documentation is generated using Swagger, providing an interactive interface for exploring the endpoints.
+- **User Authentication (Dockerized):** Users can register, login, and logout. JWT authentication is used to secure the API endpoints.
+- **Todo Management (Dockerized):** Users can create, retrieve, update, and delete todos. Todos have attributes such as title, description, due date, priority, and completion status.
+- **Pagination and Filtering (Dockerized):** Todos are paginated to improve performance, and filtering options are available based on various attributes such as title, completion status, priority, and due date.
+- **Swagger Documentation (Dockerized):** API documentation is generated using Swagger, providing an interactive interface for exploring the endpoints.
