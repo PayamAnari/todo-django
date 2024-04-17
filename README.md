@@ -60,6 +60,7 @@ The project is Dockerized for easy deployment and development environment setup.
 ## Technologies Used
 - **Django:** A high-level Python web framework that encourages rapid development and clean, pragmatic design.
 - **Django REST Framework (DRF):** A powerful and flexible toolkit for building Web APIs in Django, providing serializers, views, authentication, and more.
+- **PostgreSQL:** A powerful open-source relational database management system used for storing and managing data in the application.
 - **DRF-YASG:** DRF-YASG is a library for generating OpenAPI/Swagger specifications for Django REST Framework APIs.
 - **django-filter:** django-filter provides a simple way to filter down data based on parameters passed in the URL.
 - **PyJWT:** PyJWT is a Python library to work with JSON Web Tokens (JWT), which are used for user authentication.
