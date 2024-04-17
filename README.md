@@ -89,7 +89,7 @@ The project is Dockerized for easy deployment and development environment setup.
 | *POST* | ```/auth/login/``` | _Login user_| _All users_|
 | *POST* | ```/auth/logout/``` | _Logout user_|_All users_|
 | *POST* | ```/auth/register/``` | _Register new user_|_All users_|
-| *POST* | ```/auth/jwt/verify/``` | _Verify the validity of a token_|_All users_|
+| *DELETE* | ```/auth/user/<int:user_id>/``` | _Delete a specific user_|_All users_|
 | *GET*  | ```/auth/user/<int:user_id>/``` | Get a specific user profile |_All users_|
 | *PUT*  | ```/auth/user/<int:user_id>/``` | Edit a specific user profile |_All users_|
 | *DELETE* | ```/auth/user/<int:user_id>/``` | Delete a specific user profile |_All users_|
