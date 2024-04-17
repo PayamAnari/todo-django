@@ -24,3 +24,10 @@
 </p>
 
 ---
+
+## Todo List App - Django REST API (DRF)
+### Description
+
+This project is a complete backend solution for a pizza delivery service, built using Django REST Framework. It provides endpoints for user authentication, managing user profiles, creating, viewing, updating, and deleting pizza orders. The API is designed to be intuitive, secure, and easily extendable.
+
+---
