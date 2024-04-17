@@ -154,11 +154,11 @@ docker-compose up
 ### User Register
 ### Request
 
+```
 POST /auth/register/ HTTP/1.1
 Host: localhost:8000
 Content-Type: application/json
 
-```
 }
 data = {
     "username": "john_doe",
@@ -167,4 +167,19 @@ data = {
     "email": "john@example.com",
     "password": "securepassword"
 }
+```
+
+### Response
+
+```
+{
+    "message": "User created successfully!",
+    "data": {
+        "username": "john_doe",
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "john@example.com"
+    }
+}
+
 ```
