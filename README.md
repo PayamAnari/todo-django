@@ -183,3 +183,31 @@ data = {
 }
 
 ```
+### Get user by id
+### request
+
+```
+POST /users/<int:id>/ HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+Authorization: Bearer <your_access_token>
+
+```
+
+### response
+
+```
+{
+    "id": 1,
+    "username": "john_doe",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john@example.com",
+    "is_active": true,
+    "is_superuser": false,
+    "created_at": "2024-04-17T12:00:00Z",
+    "email_verified": false,
+    "todo_count": 5  
+}
+```
+
