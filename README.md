@@ -113,7 +113,15 @@ The project is Dockerized for easy deployment and development environment setup.
 
 1- **Clone the repository:**
 ```
-git clone https://github.com/Payamanari/todo-django.git
+git clone https://github.com/PayamAnari/todo-django.git
 cd todo-django
 
+```
+2- **Create your virtualenv and activate it:**
+```
+Pipenv or virtualenv
+```
+3- **Install dependencies:**
+```
+pip install -r requirements.txt
 ```
