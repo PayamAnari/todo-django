@@ -40,3 +40,19 @@ The project is Dockerized for easy deployment and development environment setup.
 - **Todo Management (Dockerized):** Users can create, retrieve, update, and delete todos. Todos have attributes such as title, description, due date, priority, and completion status.
 - **Pagination and Filtering (Dockerized):** Todos are paginated to improve performance, and filtering options are available based on various attributes such as title, completion status, priority, and due date.
 - **Swagger Documentation (Dockerized):** API documentation is generated using Swagger, providing an interactive interface for exploring the endpoints.
+
+<p align="center">
+  <img 
+    width="600"
+    alt="home"
+    src="https://live.staticflickr.com/65535/53660072849_a879ebd90b_b.jpg"/>
+</p>
+<p align="center">
+  <img 
+    width="600"
+    alt="home"
+    src="https://live.staticflickr.com/65535/53593108605_c15657a863_b.jpg"/>
+         
+</p>
+
+---
