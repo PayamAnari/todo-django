@@ -65,3 +65,5 @@ The project is Dockerized for easy deployment and development environment setup.
 - **PyJWT:** PyJWT is a Python library to work with JSON Web Tokens (JWT), which are used for user authentication.
 - **psycopg2:** psycopg2 is a PostgreSQL adapter for Python, enabling interaction with PostgreSQL databases.
 - **python-decouple:** python-decouple is a Python library for separating settings from code, allowing configuration via environment variables or separate configuration files.
+- **Docker:** A platform for developing, shipping, and running applications in containers, providing a consistent environment across different systems.
+- **Docker Compose:** A tool for defining and running multi-container Docker applications, simplifying the process of managing complex containerized environments.
