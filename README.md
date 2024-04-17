@@ -97,7 +97,6 @@ The project is Dockerized for easy deployment and development environment setup.
 
 ### Todo
 
-### Orders
 | METHOD | ROUTE | FUNCTIONALITY |ACCESS|
 | ------- | ----- | ------------- | ------------- |
 | *GET* | ```/todos/``` | _Get all todos_|_All users_|
