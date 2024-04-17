@@ -94,3 +94,15 @@ The project is Dockerized for easy deployment and development environment setup.
 | *PATCH*  | ```/auth/user/<int:user_id>/``` | Edit a specific user |_All users_|
 | *GET* | ```/auth/users/<int:user_id>/``` | Get a specific user |_All users_|
 | *GET* | ```/auth/users/``` | Get all users | _All users_ |
+
+### Todo
+
+### Orders
+| METHOD | ROUTE | FUNCTIONALITY |ACCESS|
+| ------- | ----- | ------------- | ------------- |
+| *GET* | ```/todos/``` | _Get all todos_|_All users_|
+| *POST* | ```/orders/``` | _Get all orders_|_All users_|
+| *GET* | ```/order/{order_id}/``` | _Retrieve an order_|_All users_|
+| *PUT* | ```/orders/{order_id}/``` | _Update an order_|_All users_|
+| *PUT* | ```/update-status/{order_id}/``` | _Update order status_|_Superuser_|
+| *DELETE* | ```/delete/{order_id}/``` | _Delete/Remove an order_ |_All users_|
