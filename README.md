@@ -106,3 +106,14 @@ The project is Dockerized for easy deployment and development environment setup.
 | *PUT* | ```/todos/<int:id>/``` | _Update an todo_|_All users_|
 | *PATCH* | ```/todos/<int:id>/``` | _Update an todo_|_All users_|
 | *DELETE* | ```/todos/<int:id>/``` | _Delete/Remove an todo_ |_All users_|
+
+---
+
+## Installation
+
+1- **Clone the repository:**
+```
+git clone https://github.com/Payamanari/todo-django.git
+cd todo-django
+
+```
