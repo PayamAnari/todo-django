@@ -62,3 +62,4 @@ The project is Dockerized for easy deployment and development environment setup.
 - **Django REST Framework (DRF):** A powerful and flexible toolkit for building Web APIs in Django, providing serializers, views, authentication, and more.
 - **DRF-YASG:** DRF-YASG is a library for generating OpenAPI/Swagger specifications for Django REST Framework APIs.
 - **django-filter:** django-filter provides a simple way to filter down data based on parameters passed in the URL.
+- **PyJWT:** PyJWT is a Python library to work with JSON Web Tokens (JWT), which are used for user authentication.
