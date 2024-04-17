@@ -125,3 +125,16 @@ Pipenv or virtualenv
 ```
 pip install -r requirements.txt
 ```
+4- **Set up environment variables:**
+Create a .env file in the project root and add the following variables:
+```
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=<your_database_name>
+DB_USER=<your_database_user>
+DB_PASSWORD=<your_database_password>
+DB_HOST=db
+DB_PORT=5432
+POSTGRES_PASSWORD=<your_postgresql_password>
+
+```
+
