@@ -101,7 +101,7 @@ The project is Dockerized for easy deployment and development environment setup.
 | METHOD | ROUTE | FUNCTIONALITY |ACCESS|
 | ------- | ----- | ------------- | ------------- |
 | *GET* | ```/todos/``` | _Get all todos_|_All users_|
-| *POST* | ```/orders/``` | _Get all orders_|_All users_|
+| *POST* | ```/todos/``` | _Create a new todo_|_All users_|
 | *GET* | ```/order/{order_id}/``` | _Retrieve an order_|_All users_|
 | *PUT* | ```/orders/{order_id}/``` | _Update an order_|_All users_|
 | *PUT* | ```/update-status/{order_id}/``` | _Update order status_|_Superuser_|
