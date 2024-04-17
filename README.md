@@ -92,5 +92,5 @@ The project is Dockerized for easy deployment and development environment setup.
 | *DELETE* | ```/auth/user/<int:user_id>/``` | _Delete a specific user_|_All users_|
 | *PUT*  | ```/auth/user/<int:user_id>/``` | Edit a specific user |_All users_|
 | *PATCH*  | ```/auth/user/<int:user_id>/``` | Edit a specific user |_All users_|
-| *DELETE* | ```/auth/user/<int:user_id>/``` | Delete a specific user profile |_All users_|
-| *GET* | ```/auth/users/``` | Get all users | _Super user_ |
+| *GET* | ```/auth/users/<int:user_id>/``` | Get a specific user |_All users_|
+| *GET* | ```/auth/users/``` | Get all users | _All users_ |
