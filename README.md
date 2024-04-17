@@ -35,3 +35,5 @@ The project is Dockerized for easy deployment and development environment setup.
 ---
 
 ## Features
+
+- **User Authentication:** Users can register, login, and logout. JWT authentication is used to secure the API endpoints.
