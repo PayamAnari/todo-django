@@ -9,7 +9,7 @@
 
 <h3 align="center">
   <strong>
-🗃 Django Todo List API 🗃
+🗓 Django Todo List API 🗓
 
   </strong>
 </h3>
