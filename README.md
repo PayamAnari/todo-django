@@ -78,3 +78,19 @@ The project is Dockerized for easy deployment and development environment setup.
   <img src="https://img.shields.io/badge/docker-0000FF?style=for-the-badge&logo=docker&logoColor=white"/>
   <img src="https://img.shields.io/badge/docker compose-4682B4?style=for-the-badge&logo=docker&logoColor=white"/>
 </p>
+
+---
+
+## API Endpoints
+### Authentication
+
+| METHOD | ROUTE | FUNCTIONALITY |ACCESS|
+| ------- | ----- | ------------- | ------------- |
+| *POST* | ```/auth/login/``` | _Login user_| _All users_|
+| *POST* | ```/auth/jwt/create/``` | _Login user_|_All users_|
+| *POST* | ```/auth/jwt/refresh/``` | _Refresh the access token_|_All users_|
+| *POST* | ```/auth/jwt/verify/``` | _Verify the validity of a token_|_All users_|
+| *GET*  | ```/auth/user/<int:user_id>/``` | Get a specific user profile |_All users_|
+| *PUT*  | ```/auth/user/<int:user_id>/``` | Edit a specific user profile |_All users_|
+| *DELETE* | ```/auth/user/<int:user_id>/``` | Delete a specific user profile |_All users_|
+| *GET* | ```/auth/users/``` | Get all users | _Super user_ |
