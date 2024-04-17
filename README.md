@@ -45,7 +45,7 @@ The project is Dockerized for easy deployment and development environment setup.
   <img 
     width="600"
     alt="home"
-    src="https://live.staticflickr.com/65535/53660072849_a879ebd90b_b.jpg"/>
+    src="https://live.staticflickr.com/65535/53660176654_0da75ec9eb_b.jpg"/>
 </p>
 <p align="center">
   <img 
