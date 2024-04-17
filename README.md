@@ -75,7 +75,6 @@ The project is Dockerized for easy deployment and development environment setup.
   <img src="https://img.shields.io/badge/postgresql-800000?style=for-the-badge&logo=postgresql&logoColor=white"/>
   <img src="https://img.shields.io/badge/swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white"/>
   <img src="https://img.shields.io/badge/pyjwt-ffa500?style=for-the-badge&logo=pyjwt&logoColor=white"/>
-  <img src="https://img.shields.io/badge/mysql-FF0000?style=for-the-badge&logo=mysql&logoColor=white"/>
   <img src="https://img.shields.io/badge/docker-0000FF?style=for-the-badge&logo=docker&logoColor=white"/>
   <img src="https://img.shields.io/badge/docker compose-4682B4?style=for-the-badge&logo=docker&logoColor=white"/>
 </p>
