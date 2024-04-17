@@ -183,7 +183,7 @@ data = {
 }
 
 ```
-### Get user by Id
+### Get user by ID
 ### request
 
 ```
