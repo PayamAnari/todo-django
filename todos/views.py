@@ -1,6 +1,9 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from .models import Todo
-from todos.serializers import TodoSerializer
+from todos.serializers import (
+    TodoRetrieveSerializer,
+    TodoCreateSerializer,
+)
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, permissions
@@ -8,7 +11,6 @@ from todos.pagination import CustomPageNumberPagination
 
 
 class TodosAPIView(ListCreateAPIView):
-    serializer_class = TodoSerializer
     pagination_class = CustomPageNumberPagination
     permission_classes = [IsAuthenticated]
     filter_backends = [
@@ -24,12 +26,18 @@ class TodosAPIView(ListCreateAPIView):
     def get_queryset(self):
         return Todo.objects.filter(owner=self.request.user)
 
+    def get_serializer_class(self):
+        if self.request.method == "GET":
+            return TodoRetrieveSerializer
+        elif self.request.method == "POST":
+            return TodoCreateSerializer
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
 
 class TodoDetailAPIView(RetrieveUpdateDestroyAPIView):
-    serializer_class = TodoSerializer
+    serializer_class = TodoCreateSerializer
     permission_classes = [IsAuthenticated]
     lookup_field = "id"
 
