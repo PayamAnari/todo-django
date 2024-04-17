@@ -63,3 +63,4 @@ The project is Dockerized for easy deployment and development environment setup.
 - **DRF-YASG:** DRF-YASG is a library for generating OpenAPI/Swagger specifications for Django REST Framework APIs.
 - **django-filter:** django-filter provides a simple way to filter down data based on parameters passed in the URL.
 - **PyJWT:** PyJWT is a Python library to work with JSON Web Tokens (JWT), which are used for user authentication.
+- **psycopg2:** psycopg2 is a PostgreSQL adapter for Python, enabling interaction with PostgreSQL databases.
