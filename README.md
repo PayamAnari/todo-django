@@ -23,7 +23,6 @@
     src="https://live.staticflickr.com/65535/53658852452_9cdf4a53c8_b.jpg"/>
 </p>
 
-
 ---
 
 ## Todo List App - Django REST API (DRF)
