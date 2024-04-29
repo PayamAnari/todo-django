@@ -32,7 +32,6 @@ This is a Django REST Framework (DRF) project for managing todo items. The API a
 
 The project is Dockerized for easy deployment and development environment setup.
 
-
 ---
 
 
